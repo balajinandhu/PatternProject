@@ -359,7 +359,7 @@ model_t <- svm(num_reviews~. , modFeatures, kernel = "linear", cross = 10)
 m <- predict(model_t, newdata = modFeatures)
 
 x <- error_pc(model_t$residuals, modFeatures$num_reviews)
-mean(x) 
+mean(x) # error % is 46.72403
 
 ################ TESTING SET #################
 modFeatures1 <- test_set[!rowSums(is.na(test_set)), ]
@@ -367,7 +367,7 @@ modFeatures1 <- test_set[!rowSums(is.na(test_set)), ]
 tunedModelY <- predict(model_t, newdata = modFeatures1)
 
 x <- error_pc(modFeatures1$num_reviews-tunedModelY, modFeatures1$num_reviews)
-mean(x)
+mean(x) # error % is 59.74219
 
 #cumsum(log$x)[100]
 #target date = "2013-03-01" , month 100
